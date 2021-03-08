@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 group 'com.rybetsky'
@@ -8,10 +8,10 @@ version '1.0-SNAPSHOT'
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Implementation-Version': version,
-                'Main-Class': 'com.mkyong.DateUtils'
+                'Implementation-Version': archiveVersion,
+                'Main-Class': 'com.rybetsky.Application'
     }
-    baseName = project.name + '-all'
+    archiveBaseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
