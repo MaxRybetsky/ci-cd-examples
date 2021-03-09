@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh '''
-                    gradle clean compileJava compileTestJava
+                    mvn clean compile
                 '''
             }
         }
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh '''
-                    gradle test
+                    mvn test
                 '''
             }
         }
@@ -22,9 +22,7 @@ pipeline {
             steps {
                 echo 'Packaging....'
                 sh '''
-                    gradle fatJar
-                    cd build/libs
-                    ls -la
+                    mvn package
                 '''
             }
         }
